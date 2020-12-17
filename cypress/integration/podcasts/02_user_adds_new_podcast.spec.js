@@ -42,6 +42,20 @@ describe("when filling out the form on the new podcast page", () => {
       .should("have.text", `${newPodcast.podcast.title}`)
   })
 
+  it("creates a new list item when the form is submitted with only a title", () => {
+    cy.get("#title")
+      .type(newPodcast.podcast.title)
+      .should("have.value", newPodcast.podcast.title)
+
+    cy.get("form").submit()
+
+    cy.url().should("eq", "http://localhost:3000/podcasts")
+
+    cy.get("li")
+      .last()
+      .should("have.text", `${newPodcast.podcast.title}`)
+  })
+
   it("remains on the new podcast form page if the form is submitted without a title", () => {
     cy.get("form").submit()
     cy.get("h1").should("have.text", "Add a Podcast Here!")

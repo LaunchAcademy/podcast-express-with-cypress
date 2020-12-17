@@ -4,7 +4,7 @@ import podcastsRouter from "./podcastsRouter.js"
 const rootRouter = new express.Router()
 
 rootRouter.get("/", (req, res) => {
-  res.send("Hello there!.  You have reached '/'.")
+  res.render("index")
 })
 
 rootRouter.use("/podcasts", podcastsRouter)
