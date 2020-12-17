@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
 		"dev": "./node_modules/.bin/nodemon src/app.js",
-    "dev:debug": "./node_modules/.bin/nodemon --inspect-brk src/app.js",
+		"dev:debug": "./node_modules/.bin/nodemon --inspect-brk src/app.js",
+		"test": "./node_modules/.bin/cypress run",
+    "test:open": "./node_modules/.bin/cypress open",
+    "test:file": "./node_modules/.bin/cypress run --spec",
     "lint": "./node_modules/.bin/eslint",
 	  "start": "node app.js"
 	},
