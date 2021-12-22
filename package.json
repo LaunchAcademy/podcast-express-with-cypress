@@ -1,16 +1,16 @@
 {
-  "name": "podcasts-express-with-cypress",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
+	"name": "podcasts-express-with-cypress",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
 		"dev": "./node_modules/.bin/nodemon src/app.js",
 		"dev:debug": "./node_modules/.bin/nodemon --inspect-brk src/app.js",
 		"test": "./node_modules/.bin/cypress run",
-    "test:open": "./node_modules/.bin/cypress open",
-    "test:file": "./node_modules/.bin/cypress run --spec",
-    "lint": "./node_modules/.bin/eslint",
-	  "start": "node app.js"
+		"test:open": "./node_modules/.bin/cypress open",
+		"test:file": "./node_modules/.bin/cypress run --spec",
+		"lint": "./node_modules/.bin/eslint",
+		"start": "node app.js"
 	},
 	"dependencies": {
 		"body-parser": "^1.18.3",
@@ -21,6 +21,7 @@
 		"flash": "^1.1.0",
 		"hbs": "~4.0.1",
 		"http-errors": "~1.6.2",
+		"lodash": "^4.17.21",
 		"morgan": "~1.9.0"
 	},
 	"devDependencies": {

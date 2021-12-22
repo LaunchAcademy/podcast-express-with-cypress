@@ -61,7 +61,7 @@ describe("when filling out the form on the new podcast page", () => {
     cy.get("h1").should("have.text", "Add a Podcast Here!")
   })
 
-  it("does not add an empty li element to the index page if the form is submitted without a name", () => {
+  it("does not add an empty li element to the index page if the form is submitted without a title", () => {
     cy.get("form").submit()
 
     cy.visit("/podcasts")
