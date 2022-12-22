@@ -23,12 +23,12 @@ context("Podcasts Index", () => {
     cy.get("ul")
       .find("li")
       .first()
-      .should("have.text", `${initialPodcasts.podcasts[0].title}`)
+      .should("have.text", initialPodcasts.podcasts[0].title)
 
     cy.get("ul")
       .find("li")
       .last()
-      .should("have.text", `${initialPodcasts.podcasts[4].title}`)
+      .should("have.text", initialPodcasts.podcasts[4].title)
   })
 
   it("has a link to go to the new podcast form", () => {

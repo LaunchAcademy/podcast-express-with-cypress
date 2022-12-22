@@ -2,7 +2,6 @@ import fs from "fs"
 
 const podcastsPath = "podcasts.json"
 
-// const podcastObjects = JSON.parse(fs.readFileSync(podcastsPath)).podcasts
 
 class Podcast {
   constructor({ title, description, network }) {
@@ -12,11 +11,31 @@ class Podcast {
   }
 
   static findAll() {
+    const JSONVersionOfPodcasts = fs.readFileSync(podcastsPath)
+    const parsedPodcasts = JSON.parse(JSONVersionOfPodcasts)
 
+    const formalPodcastObjects = parsedPodcasts.podcasts.map((podcastObject) => {
+      return new Podcast(podcastObject)
+    })
+    return formalPodcastObjects
   }
 
   save() {
 
+    if (this.title.trim() === "") {
+      return false
+    } else {
+      // this = { title: this.title, description: this.description, network: this.network }
+      const podcastObjects = Podcast.findAll()
+      podcastObjects.push(this)
+
+      const podcastDataToAddToJSONFile = {
+        podcasts: podcastObjects
+      }
+
+      fs.writeFileSync(podcastsPath, JSON.stringify(podcastDataToAddToJSONFile))
+      return true
+    }
   }
 }
 
