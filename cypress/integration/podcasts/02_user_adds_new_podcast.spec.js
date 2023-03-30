@@ -7,6 +7,7 @@ const podcastsFilePath = "podcasts.json"
 
 describe("when filling out the form on the new podcast page", () => {
   beforeEach(() => {
+    cy.writeFile(podcastsFilePath, JSON.stringify(initialPodcasts))
     cy.visit("/podcasts/new")
   })
 
@@ -69,9 +70,5 @@ describe("when filling out the form on the new podcast page", () => {
     cy.get("li")
       .last()
       .should("not.have.text", "")
-  })
-
-  afterEach(() => {
-    cy.writeFile(podcastsFilePath, JSON.stringify(initialPodcasts))
   })
 })

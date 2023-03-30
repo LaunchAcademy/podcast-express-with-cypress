@@ -4,11 +4,37 @@ import Podcast from "../models/Podcast.js"
 
 const podcastsRouter = new express.Router()
 
+// /podcasts
 podcastsRouter.get("/", (req, res) => {
-  const podcasts = Podcast.findAll()
+  const arrayOfPodcastObjects = Podcast.findAll()
+  console.log(arrayOfPodcastObjects)
 
-  res.render("podcasts/index", { podcasts: podcasts })
+  res.render("podcasts/index", { podcasts: arrayOfPodcastObjects })
 })
+
+podcastsRouter.get("/new", (req, res) => {
+  res.render("podcasts/form")
+})
+
+podcastsRouter.post("/create", (req, res) => {
+  // console.log(req.body)
+  debugger
+  if (req.body.title.trim() === "") {
+
+    res.render("podcasts/form")
+  } else {
+    const newPodcast = new Podcast(req.body)
+
+    newPodcast.save()
+
+    // if we dont redirect or render, then there will be a blank page displayed
+    res.redirect("/podcasts")
+  }
+})
+
+// File Paths 
+// 
+
 
 // new route 
 
