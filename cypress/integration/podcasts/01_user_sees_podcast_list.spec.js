@@ -39,5 +39,6 @@ context("Podcasts Index", () => {
       .click()
 
     cy.url().should("eq", "http://localhost:3000/podcasts/new")
+    // cy.url().should("include", "/podcasts/new")
   })
 })
