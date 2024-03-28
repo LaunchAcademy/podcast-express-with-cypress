@@ -1,8 +1,11 @@
 /// <reference types="cypress" />
 import initialPodcasts from "../../fixtures/initialPodcasts.json"
 
+const podcastsFilePath = "podcasts.json"
+
 context("Podcasts Index", () => {
   it("navigating to the root will redirect to the index page", () => {
+    cy.writeFile(podcastsFilePath, JSON.stringify(initialPodcasts))
     cy.visit("/")
 
     cy.url().should("eq", "http://localhost:3000/podcasts")
